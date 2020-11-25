@@ -18,17 +18,21 @@ class Pub:
         for drink in self.drinks:
             if drink.name == drink_name:
                 return drink
+    
+    def add_money_to_till(self, amount):
+        self.till += amount
 
     def increase_customer_drunkeness(self, drink_name, customer):
         drink = self.get_drink_by_name(drink_name)
-        customer.drunkeness += drink.alcohol_level
-
+        customer.increase_customer_drunkeness(drink.alcohol_level)
 
     def sell_drink_to_customer(self, drink_name, customer):
-        if customer.age >= 18:
+        if customer.age >= 18 and customer.drunkeness < 50:
             drink = self.get_drink_by_name(drink_name)
             customer.remove_money_from_wallet(drink.price)
-            self.till += drink.price
+            self.add_money_to_till(drink.price)
+            customer.increase_customer_drunkeness(drink.alcohol_level)
+    
 
     
 

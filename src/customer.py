@@ -10,4 +10,7 @@ class Customer:
 
     def remove_money_from_wallet(self, amount):
         self.wallet -= amount
+
+    def increase_customer_drunkeness(self, alcohol_level):
+        self.drunkeness += alcohol_level
     
