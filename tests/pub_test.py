@@ -34,9 +34,8 @@ class TestPub(unittest.TestCase):
         self.assertEqual(30, self.underage_customer.wallet)
         self.assertEqual(100, self.pub.till)
 
-    def test_increase_customer_drunkeness(self):
-        self.pub.increase_customer_drunkeness("Vodka", self.customer)
-        self.assertEqual(30, self.customer.drunkeness)
+    def teset_get_food_by_name(self):
+        self.assertEqual("Pizza", self.pub.get_food_by_name("Pizza"))
 
     def test_customer_increases_drunkeness(self):
         self.pub.sell_drink_to_customer("Whiskey", self.customer)
@@ -47,6 +46,21 @@ class TestPub(unittest.TestCase):
         self.pub.sell_drink_to_customer("Whiskey", self.customer)
         self.pub.sell_drink_to_customer("Vodka", self.customer)
         self.assertEqual(80, self.customer.drunkeness)
+
+    def test_sell_food_to_customer(self):
+        self.pub.sell_food_to_customer("Burger", self.customer)
+        self.assertEqual(45.50, self.customer.wallet)
+        self.assertEqual(104.5, self.pub.till)
+
+    def test_decreasse_drunkeness(self):
+        self.pub.sell_drink_to_customer("Whiskey", self.customer)
+        self.pub.sell_food_to_customer("Burger", self.customer)
+        self.assertEqual(32, self.customer.drunkeness )
+
+
+
+
+    
 
     
 
