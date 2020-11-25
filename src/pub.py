@@ -14,8 +14,15 @@ class Pub:
 
         self.drinks = [beer, wine, whiskey, vodka]
 
-    def sell_drink_to_customer(self, drink, customer):
-        cost = self.drinks[drink].price
+    def get_drink_by_name(self, drink_name):
+        for drink in self.drinks:
+            if drink.name == drink_name:
+                return drink
+
+    def sell_drink_to_customer(self, drink_name, customer):
+        drink = self.get_drink_by_name(drink_name)
+        customer.wallet -= drink.price
+        self.till += drink.price
 
 
 
